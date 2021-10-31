@@ -9,19 +9,19 @@ public class Tests
     [Fact]
     public Task WithOneGeneric()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(typeof(Dictionary<string, ConcurrentDictionary<string, string>>)));
+        return Verifier.Verify(typeof(Dictionary<string, ConcurrentDictionary<string, string>>).SimpleName());
     }
 
     [Fact]
     public Task Simple()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(typeof(string)));
+        return Verifier.Verify(typeof(string).SimpleName());
     }
 
     [Fact]
     public Task GenericTypeDefinition()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(typeof(IEnumerable<>)));
+        return Verifier.Verify(typeof(IEnumerable<>).SimpleName());
     }
 
     [Fact]
@@ -30,103 +30,103 @@ public class Tests
         var type = typeof(IEnumerable<>)
             .GetGenericArguments()
             .First();
-        return Verifier.Verify(TypeNameConverter.SimpleName(type));
+        return Verifier.Verify(type.SimpleName());
     }
 
     [Fact]
     public Task Nested()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(typeof(TargetWithNested)));
+        return Verifier.Verify(typeof(TargetWithNested).SimpleName());
     }
 
     [Fact]
     public Task Nullable()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(typeof(int?)));
+        return Verifier.Verify(typeof(int?).SimpleName());
     }
 
     [Fact]
     public Task Array()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(typeof(int[])));
+        return Verifier.Verify(typeof(int[]).SimpleName());
     }
 
     [Fact]
     public Task ArrayMulti()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(typeof(int[,])));
+        return Verifier.Verify(typeof(int[,]).SimpleName());
     }
 
     [Fact]
     public Task ArrayNullable()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(typeof(int?[])));
+        return Verifier.Verify(typeof(int?[]).SimpleName());
     }
 
     [Fact]
     public Task List()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(typeof(List<TargetWithNamespace>)));
+        return Verifier.Verify(typeof(List<TargetWithNamespace>).SimpleName());
     }
 
     [Fact]
     public Task Enumerable()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(typeof(IEnumerable<TargetWithNamespace>)));
+        return Verifier.Verify(typeof(IEnumerable<TargetWithNamespace>).SimpleName());
     }
 
     [Fact]
     public Task Dictionary()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(typeof(Dictionary<string,int>)));
+        return Verifier.Verify(typeof(Dictionary<string,int>).SimpleName());
     }
     [Fact]
     public Task Dictionary2()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(typeof(Dictionary<IEnumerable<TargetWithNamespace>,IEnumerable<TargetWithNamespace>>)));
+        return Verifier.Verify(typeof(Dictionary<IEnumerable<TargetWithNamespace>,IEnumerable<TargetWithNamespace>>).SimpleName());
     }
 
     [Fact]
     public Task Dynamic()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(new {Name = "foo"}.GetType()));
+        return Verifier.Verify(new {Name = "foo"}.GetType().SimpleName());
     }
 
     [Fact]
     public Task RuntimeEnumerable()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(MethodWithYield().GetType()));
+        return Verifier.Verify(MethodWithYield().GetType().SimpleName());
     }
 
     [Fact]
     public Task RuntimeEnumerableDynamic()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(MethodWithYieldDynamic().GetType()));
+        return Verifier.Verify(MethodWithYieldDynamic().GetType().SimpleName());
     }
 
     [Fact]
     public Task RuntimeEnumerableWithSelect()
     {
         // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-        return Verifier.Verify(TypeNameConverter.SimpleName(MethodWithYield().Select(x => x != null).GetType()));
+        return Verifier.Verify(MethodWithYield().Select(x => x != null).GetType().SimpleName());
     }
 
     [Fact]
     public Task RuntimeEnumerableDynamicWithSelect()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(MethodWithYieldDynamic().Select(x => x != null).GetType()));
+        return Verifier.Verify(MethodWithYieldDynamic().Select(x => x != null).GetType().SimpleName());
     }
 
     [Fact]
     public Task RuntimeEnumerableDynamicWithInnerSelect()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(MethodWithYield().Select(x => new {X = x.ToString()}).GetType()));
+        return Verifier.Verify(MethodWithYield().Select(x => new {X = x.ToString()}).GetType().SimpleName());
     }
 
     [Fact]
     public Task EnumerableOfArray()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(typeof(IEnumerable<TargetWithNamespace[]>)));
+        return Verifier.Verify(typeof(IEnumerable<TargetWithNamespace[]>).SimpleName());
     }
 
     static IEnumerable<TargetWithNamespace> MethodWithYield()
@@ -142,13 +142,13 @@ public class Tests
     [Fact]
     public Task ListOfArray()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(typeof(List<TargetWithNamespace[]>)));
+        return Verifier.Verify(typeof(List<TargetWithNamespace[]>).SimpleName());
     }
 
     [Fact]
     public Task ArrayOfList()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(typeof(List<TargetWithNamespace>[])));
+        return Verifier.Verify(typeof(List<TargetWithNamespace>[]).SimpleName());
     }
 
     class TargetWithNested
@@ -158,7 +158,13 @@ public class Tests
     [Fact]
     public Task NestedWithParentGeneric()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(typeof(Parent<int>.Child)));
+        return Verifier.Verify(typeof(Parent<int>.Child).SimpleName());
+    }
+
+    [Fact]
+    public Task NestedWithParentGeneric_Def()
+    {
+        return Verifier.Verify(typeof(Parent<>.Child).SimpleName());
     }
 
     public class Parent<T>
@@ -177,7 +183,12 @@ public class Tests
     [Fact]
     public Task NestedWithParentGenericTriple()
     {
-        return Verifier.Verify(TypeNameConverter.SimpleName(typeof(One<int>.Two<string>.Three)));
+        return Verifier.Verify(typeof(One<int>.Two<string>.Three).SimpleName());
+    }
+    [Fact]
+    public Task NestedWithParentGenericTriple_Def()
+    {
+        return Verifier.Verify(typeof(One<>.Two<>.Three).SimpleName());
     }
 
     public class One<T>
