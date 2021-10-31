@@ -81,7 +81,7 @@ public static partial class TypeNameConverter
     {
         foreach (var redirect in redirects)
         {
-            if (type == redirect.Key)
+            if (redirect.Key.IsAssignableFrom(type))
             {
                 return redirect.Value(type).SimpleName();
             }
