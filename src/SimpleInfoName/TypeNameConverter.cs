@@ -67,8 +67,7 @@ public static class TypeNameConverter
         return infoCache.GetOrAdd(parameter, _ =>
         {
             var member = SimpleName(parameter.Member);
-            var declaringType = SimpleName(parameter.Member.DeclaringType!);
-            return $"'{parameter.Name}' of {declaringType}.{member}";
+            return $"'{parameter.Name}' of {member}";
         });
     }
 
