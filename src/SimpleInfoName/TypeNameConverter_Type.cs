@@ -2,7 +2,7 @@
 
 public static partial class TypeNameConverter
 {
-    static ConcurrentDictionary<Type, Type> redirects = new();
+    static ConcurrentDictionary<Type, Func<Type,Type>> redirects = new();
 
     public static void AddRedirect<TFrom, TTo>()
     {
@@ -11,7 +11,12 @@ public static partial class TypeNameConverter
 
     public static void AddRedirect(Type from, Type to)
     {
-        redirects[from] = to;
+        AddRedirect(from, _ => to);
+    }
+
+    public static void AddRedirect(Type from, Func<Type, Type> convert)
+    {
+        redirects[from] = convert;
     }
 
     static ConcurrentDictionary<Type, string> cacheDictionary = new(
@@ -78,7 +83,7 @@ public static partial class TypeNameConverter
         {
             if (type == redirect.Key)
             {
-                return redirect.Value.SimpleName();
+                return redirect.Value(type).SimpleName();
             }
         }
 
