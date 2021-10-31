@@ -34,7 +34,7 @@ public class Snippets
         using var writer = File.CreateText(md);
         var type = typeof(Target<int>);
 
-        writer.WriteLine($@" * Type `{type.SimpleName()}`. Compared to Type.FullName of `{type.FullName.Replace("`","``")}`");
+        writer.WriteLine($@" * Type `{type.SimpleName()}`.<br>Compared to `Type.FullName`: `{type.FullName!.Replace("`","``")}`");
 
         var method = type.GetMethod("Method")!.MakeGenericMethod(typeof(string),typeof(bool));
 
