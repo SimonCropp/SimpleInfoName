@@ -18,7 +18,7 @@ Generates names for reflection infos. Adds a `SimpleName` extension method to th
 
 ## Usage
 
-Given a class dfinition of:
+Given a class definition of:
 
 <!-- snippet: Target -->
 <a id='snippet-target'></a>
@@ -41,7 +41,7 @@ namespace MyNamespace
 <sup><a href='/src/Tests/Snippets.cs#L9-L24' title='Snippet source file'>snippet source</a> | <a href='#snippet-target' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
-The simple name would be:
+The simple names would be:
 
  * Type `Target<int>`.<br>Compared to `Type.FullName`: `MyNamespace.Target``1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]` <!-- include: sample. path: /src/sample.include.md -->
  * Method `Target<int>.Method(List<bool> parameter)`
