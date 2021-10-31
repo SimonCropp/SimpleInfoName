@@ -88,7 +88,7 @@ public class Tests
     }
 
     [Fact]
-    public Task Dynamic()
+    public Task AnonymousType()
     {
         return Verifier.Verify(new {Name = "foo"}.GetType().SimpleName());
     }
@@ -100,9 +100,9 @@ public class Tests
     }
 
     [Fact]
-    public Task RuntimeEnumerableDynamic()
+    public Task RuntimeEnumerableAnonymousType()
     {
-        return Verifier.Verify(MethodWithYieldDynamic().GetType().SimpleName());
+        return Verifier.Verify(MethodWithYieldAnonymousType().GetType().SimpleName());
     }
 
     [Fact]
@@ -113,13 +113,13 @@ public class Tests
     }
 
     [Fact]
-    public Task RuntimeEnumerableDynamicWithSelect()
+    public Task RuntimeEnumerableAnonymousTypeWithSelect()
     {
-        return Verifier.Verify(MethodWithYieldDynamic().Select(x => x != null).GetType().SimpleName());
+        return Verifier.Verify(MethodWithYieldAnonymousType().Select(x => x != null).GetType().SimpleName());
     }
 
     [Fact]
-    public Task RuntimeEnumerableDynamicWithInnerSelect()
+    public Task RuntimeEnumerableAnonymousTypeWithInnerSelect()
     {
         return Verifier.Verify(MethodWithYield().Select(x => new {X = x.ToString()}).GetType().SimpleName());
     }
@@ -135,7 +135,7 @@ public class Tests
         yield return new();
     }
 
-    static IEnumerable<dynamic> MethodWithYieldDynamic()
+    static IEnumerable<object> MethodWithYieldAnonymousType()
     {
         yield return new {X = "1"};
     }

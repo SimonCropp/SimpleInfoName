@@ -89,7 +89,7 @@ public static partial class TypeNameConverter
 
         if (IsAnonType(type))
         {
-            return "dynamic";
+            return "object";
         }
 
         if (type.Name.StartsWith("<") ||
@@ -103,7 +103,7 @@ public static partial class TypeNameConverter
             {
                 if (singleOrDefault.GetGenericArguments().Single().IsAnonType())
                 {
-                    return "IEnumerable<dynamic>";
+                    return "IEnumerable<object>";
                 }
                 return SimpleName(singleOrDefault);
             }
