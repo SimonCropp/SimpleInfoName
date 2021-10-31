@@ -40,7 +40,7 @@ public class Snippets
         writer.WriteLine("|   |   |");
         writer.WriteLine("| - | - |");
         writer.WriteLine($@"| Type | `{type.SimpleName()}` |");
-        writer.WriteLine($@"| | Compared to `Type.FullName`: `{type.FullName!.Replace("`","``")}` |");
+        writer.WriteLine($@"| | Compared to `Type.FullName` of<br> `{type.FullName!.Replace("`","``")}` |");
 
         var method = type.GetMethod("Method")!.MakeGenericMethod(typeof(string),typeof(bool));
 
