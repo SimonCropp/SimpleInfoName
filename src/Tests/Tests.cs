@@ -78,12 +78,13 @@ public class Tests
     [Fact]
     public Task Dictionary()
     {
-        return Verifier.Verify(typeof(Dictionary<string,int>).SimpleName());
+        return Verifier.Verify(typeof(Dictionary<string, int>).SimpleName());
     }
+
     [Fact]
     public Task Dictionary2()
     {
-        return Verifier.Verify(typeof(Dictionary<IEnumerable<TargetWithNamespace>,IEnumerable<TargetWithNamespace>>).SimpleName());
+        return Verifier.Verify(typeof(Dictionary<IEnumerable<TargetWithNamespace>, IEnumerable<TargetWithNamespace>>).SimpleName());
     }
 
     [Fact]
@@ -154,7 +155,7 @@ public class Tests
     class TargetWithNested
     {
     }
-    
+
     [Fact]
     public Task NestedWithParentGeneric()
     {
@@ -185,6 +186,7 @@ public class Tests
     {
         return Verifier.Verify(typeof(One<int>.Two<string>.Three).SimpleName());
     }
+
     [Fact]
     public Task NestedWithParentGenericTriple_Def()
     {
@@ -205,6 +207,21 @@ public class Tests
                 }
             }
         }
+    }
+
+    [Fact]
+    public Task Redirect()
+    {
+        TypeNameConverter.AddRedirect<From, To>();
+        return Verifier.Verify(typeof(From).SimpleName());
+    }
+
+    public class From
+    {
+    }
+
+    public class To
+    {
     }
 }
 

@@ -2,6 +2,18 @@
 
 public static partial class TypeNameConverter
 {
+    static ConcurrentDictionary<Type, Type> redirects = new();
+
+    public static void AddRedirect<TFrom, TTo>()
+    {
+        AddRedirect(typeof(TFrom), typeof(TTo));
+    }
+
+    public static void AddRedirect(Type from, Type to)
+    {
+        redirects[from] = to;
+    }
+
     static ConcurrentDictionary<Type, string> cacheDictionary = new(
         new List<KeyValuePair<Type, string>>
         {
@@ -62,6 +74,14 @@ public static partial class TypeNameConverter
 
     static string Inner(Type type)
     {
+        foreach (var redirect in redirects)
+        {
+            if (type == redirect.Key)
+            {
+                return redirect.Value.SimpleName();
+            }
+        }
+
         if (IsAnonType(type))
         {
             return "dynamic";
@@ -83,12 +103,7 @@ public static partial class TypeNameConverter
                 return SimpleName(singleOrDefault);
             }
         }
-
-        return InnerGetName(type);
-    }
-
-    static string InnerGetName(Type type)
-    {
+        
         if (type.IsGenericParameter)
         {
             return type.Name;
