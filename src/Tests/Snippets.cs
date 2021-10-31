@@ -13,16 +13,10 @@ namespace MyNamespace
 
     public class Target<K> : Parent<int>
     {
-        public Target()
-        {
-            
-        }
+        public Target(){}
         public string Property { get; set; } = null!;
         public string field = null!;
-
-        public void Method<Y, D>(List<D> parameter)
-        {
-        }
+        public void Method<Y, D>(List<D> parameter){}
     }
 }
 #endregion

@@ -30,20 +30,14 @@ namespace MyNamespace
 
     public class Target<K> : Parent<int>
     {
-        public Target()
-        {
-            
-        }
+        public Target(){}
         public string Property { get; set; } = null!;
         public string field = null!;
-
-        public void Method<Y, D>(List<D> parameter)
-        {
-        }
+        public void Method<Y, D>(List<D> parameter){}
     }
 }
 ```
-<sup><a href='/src/Tests/Snippets.cs#L9-L28' title='Snippet source file'>snippet source</a> | <a href='#snippet-target' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L9-L22' title='Snippet source file'>snippet source</a> | <a href='#snippet-target' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 And a constructed type of `Target<int>`.
