@@ -4,7 +4,7 @@ using Xunit;
 using SimpleInfoName;
 
 [UsesVerify]
-public class TypeNameConverterTests
+public class Tests
 {
     [Fact]
     public Task WithOneGeneric()

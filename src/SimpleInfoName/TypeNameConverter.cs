@@ -68,7 +68,7 @@ public static class TypeNameConverter
         {
             var member = SimpleName(parameter.Member);
             var declaringType = SimpleName(parameter.Member.DeclaringType!);
-            return $"{parameter.Name} of {declaringType}.{member}";
+            return $"'{parameter.Name}' of {declaringType}.{member}";
         });
     }
 
