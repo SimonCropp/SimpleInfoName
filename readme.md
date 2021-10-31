@@ -29,17 +29,16 @@ namespace MyNamespace
 
     public class Target<K> : Parent<int>
     {
-        public Dictionary<string, K> Property { get; set; } = null!;
-        public Dictionary<string, K> field = null!;
+        public string Property { get; set; } = null!;
+        public string field = null!;
 
-        public Dictionary<Y, D> Method<Y, D>(List<D> parameter)
+        public void Method<Y, D>(List<D> parameter)
         {
-            return new Dictionary<Y, D>();
         }
     }
 }
 ```
-<sup><a href='/src/Tests/Snippets.cs#L9-L25' title='Snippet source file'>snippet source</a> | <a href='#snippet-target' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L9-L24' title='Snippet source file'>snippet source</a> | <a href='#snippet-target' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The simple name would be:

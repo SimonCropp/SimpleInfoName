@@ -13,12 +13,11 @@ namespace MyNamespace
 
     public class Target<K> : Parent<int>
     {
-        public Dictionary<string, K> Property { get; set; } = null!;
-        public Dictionary<string, K> field = null!;
+        public string Property { get; set; } = null!;
+        public string field = null!;
 
-        public Dictionary<Y, D> Method<Y, D>(List<D> parameter)
+        public void Method<Y, D>(List<D> parameter)
         {
-            return new Dictionary<Y, D>();
         }
     }
 }
