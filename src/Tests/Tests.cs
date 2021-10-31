@@ -210,5 +210,7 @@ public class Tests
 
 namespace MyNamespace
 {
-    public class TargetWithNamespace{}
+    public class TargetWithNamespace
+    {
+    }
 }

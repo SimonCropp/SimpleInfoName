@@ -3,13 +3,14 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/dl7snkk70b964ke4/branch/master?svg=true)](https://ci.appveyor.com/project/SimonCropp/SimpleInfoName)
 [![NuGet Status](https://img.shields.io/nuget/v/SimpleInfoName.svg)](https://www.nuget.org/packages/SimpleInfoName/)
 
-Generates names for reflection infos. Adds a `SimpleName` extension method to the following types.
+Generates names for reflection infos. Adds a `SimpleName()` extension method to the following types.
 
  * Types
  * PrameterInfo 
  * PropertyInfo
  * FieldInfo
  * MethodInfo
+ * ConstructorInfo
 
 ## NuGet package
 
@@ -29,6 +30,10 @@ namespace MyNamespace
 
     public class Target<K> : Parent<int>
     {
+        public Target()
+        {
+            
+        }
         public string Property { get; set; } = null!;
         public string field = null!;
 
@@ -38,16 +43,13 @@ namespace MyNamespace
     }
 }
 ```
-<sup><a href='/src/Tests/Snippets.cs#L9-L24' title='Snippet source file'>snippet source</a> | <a href='#snippet-target' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L9-L28' title='Snippet source file'>snippet source</a> | <a href='#snippet-target' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The simple names would be:
 
- * Type `Target<int>`.<br>Compared to `Type.FullName`: `MyNamespace.Target``1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]` <!-- include: sample. path: /src/sample.include.md -->
- * Method `Target<int>.Method(List<bool> parameter)`
- * Parameter `'parameter' of Target<int>.Method(List<bool> parameter)`
- * Field `Target<int>.field`
- * Property `Target<int>.Property` <!-- endInclude -->
+<!-- emptyInclude: sample. path: /src/sample.include.md -->
+<!-- emptyInclude: sample -->
 
 
 ## Icon

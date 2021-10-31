@@ -13,6 +13,10 @@ namespace MyNamespace
 
     public class Target<K> : Parent<int>
     {
+        public Target()
+        {
+            
+        }
         public string Property { get; set; } = null!;
         public string field = null!;
 
@@ -37,6 +41,8 @@ public class Snippets
 
         var method = type.GetMethod("Method")!.MakeGenericMethod(typeof(string),typeof(bool));
 
+        var constructorInfos = type.GetConstructors();
+        writer.WriteLine($@" * Constructor `{constructorInfos.Single()!.SimpleName()}`");
         writer.WriteLine($@" * Method `{method.SimpleName()}`");
         writer.WriteLine($@" * Parameter `{method.GetParameters().First().SimpleName()}`");
         writer.WriteLine($@" * Field `{type.GetField("field").SimpleName()}`");
