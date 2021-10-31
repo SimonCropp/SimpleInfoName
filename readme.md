@@ -52,4 +52,4 @@ The simple names would be:
 
 ## Icon
 
-[Helmet](https://thenounproject.com/term/helmet/9554/) designed by [Leonidas Ikonomou](https://thenounproject.com/alterego) from [The Noun Project](https://thenounproject.com).
+[Complex](https://thenounproject.com/term/complex /2270599/) designed by [auttapol](https://thenounproject.com/monsterku69) from [The Noun Project](https://thenounproject.com).
