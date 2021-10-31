@@ -46,6 +46,8 @@ namespace MyNamespace
 <sup><a href='/src/Tests/Snippets.cs#L9-L28' title='Snippet source file'>snippet source</a> | <a href='#snippet-target' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
+And a constructed type of `Target<int>`.
+    
 The simple names would be:
 
 <!-- include: sample. path: /src/sample.include.md -->
