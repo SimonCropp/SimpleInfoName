@@ -132,7 +132,7 @@ public static partial class TypeNameConverter
                 declaringType = type.DeclaringType!;
                 if (declaringType.IsGenericTypeDefinition)
                 {
-                    var parentGenericCount = declaringType.GetTypeInfo().GenericTypeParameters.Length;
+                    var parentGenericCount = declaringType.GetGenericArguments().Length;
                     var typeArguments = genericArguments.Take(parentGenericCount).ToArray();
                     declaringType = declaringType.MakeGenericType(typeArguments);
                     genericArguments = genericArguments.Skip(parentGenericCount).ToArray();
