@@ -16,7 +16,7 @@ public static partial class TypeNameConverter
 
         throw new InvalidOperationException();
     }
-    
+
     public static string SimpleName(this MethodInfo method)
     {
         return infoCache.GetOrAdd(method, _ =>
@@ -30,5 +30,4 @@ public static partial class TypeNameConverter
             return builder.ToString();
         });
     }
-    
 }

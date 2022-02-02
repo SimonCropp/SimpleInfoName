@@ -1,10 +1,7 @@
 ﻿#if NET48
 
 using MyNamespace;
-using VerifyXunit;
-using Xunit;
 using SimpleInfoName;
-using VerifyTests;
 
 #region Target
 namespace MyNamespace

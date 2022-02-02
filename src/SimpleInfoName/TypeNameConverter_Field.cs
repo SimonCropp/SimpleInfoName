@@ -2,7 +2,6 @@
 
 public static partial class TypeNameConverter
 {
-  
     public static string SimpleName(this FieldInfo field)
     {
         return infoCache.GetOrAdd(field, _ =>

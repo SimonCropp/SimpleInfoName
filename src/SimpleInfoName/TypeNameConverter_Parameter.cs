@@ -2,8 +2,6 @@
 
 public static partial class TypeNameConverter
 {
-  
-
     public static string SimpleName(this ParameterInfo parameter)
     {
         return infoCache.GetOrAdd(parameter, _ =>
@@ -12,5 +10,4 @@ public static partial class TypeNameConverter
             return $"'{parameter.Name}' of {member}";
         });
     }
-    
 }

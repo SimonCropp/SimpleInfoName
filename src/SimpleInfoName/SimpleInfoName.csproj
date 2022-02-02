@@ -6,6 +6,7 @@
     <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net472;net5;net6</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="ProjectDefaults" Version="1.0.62" PrivateAssets="all" />
+    <Using Remove="System.Net.Http" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.68" PrivateAssets="all" />
   </ItemGroup>
 </Project>

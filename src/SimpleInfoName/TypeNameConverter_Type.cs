@@ -108,7 +108,7 @@ public static partial class TypeNameConverter
                 return SimpleName(singleOrDefault);
             }
         }
-        
+
         if (type.IsGenericParameter)
         {
             return type.Name;

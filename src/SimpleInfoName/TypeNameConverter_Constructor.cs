@@ -23,5 +23,4 @@ public static partial class TypeNameConverter
             return builder.ToString();
         });
     }
-    
 }
