@@ -17,9 +17,8 @@ public static partial class TypeNameConverter
         throw new InvalidOperationException();
     }
 
-    public static string SimpleName(this MethodInfo method)
-    {
-        return infoCache.GetOrAdd(method, _ =>
+    public static string SimpleName(this MethodInfo method) =>
+        infoCache.GetOrAdd(method, _ =>
         {
             var declaringType = SimpleName(method.DeclaringType!);
             StringBuilder builder = new($"{declaringType}.{method.Name}(");
@@ -29,5 +28,4 @@ public static partial class TypeNameConverter
             builder.Append(')');
             return builder.ToString();
         });
-    }
 }

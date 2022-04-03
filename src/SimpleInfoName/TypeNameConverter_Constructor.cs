@@ -2,9 +2,8 @@
 
 public static partial class TypeNameConverter
 {
-    public static string SimpleName(this ConstructorInfo constructor)
-    {
-        return infoCache.GetOrAdd(constructor, _ =>
+    public static string SimpleName(this ConstructorInfo constructor) =>
+        infoCache.GetOrAdd(constructor, _ =>
         {
             var declaringType = SimpleName(constructor.DeclaringType!);
             var builder = new StringBuilder($"{declaringType}");
@@ -22,5 +21,4 @@ public static partial class TypeNameConverter
             builder.Append(')');
             return builder.ToString();
         });
-    }
 }

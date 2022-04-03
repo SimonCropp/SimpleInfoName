@@ -4,20 +4,14 @@ public static partial class TypeNameConverter
 {
     static ConcurrentDictionary<Type, Func<Type,Type>> redirects = new();
 
-    public static void AddRedirect<TFrom, TTo>()
-    {
+    public static void AddRedirect<TFrom, TTo>() =>
         AddRedirect(typeof(TFrom), typeof(TTo));
-    }
 
-    public static void AddRedirect(Type from, Type to)
-    {
+    public static void AddRedirect(Type from, Type to) =>
         AddRedirect(from, _ => to);
-    }
 
-    public static void AddRedirect(Type from, Func<Type, Type> convert)
-    {
+    public static void AddRedirect(Type from, Func<Type, Type> convert) =>
         redirects[from] = convert;
-    }
 
     static ConcurrentDictionary<Type, string> cacheDictionary = new(
         new List<KeyValuePair<Type, string>>
@@ -72,10 +66,8 @@ public static partial class TypeNameConverter
 #endif
         });
 
-    public static string SimpleName(this Type type)
-    {
-        return cacheDictionary.GetOrAdd(type, Inner);
-    }
+    public static string SimpleName(this Type type) =>
+        cacheDictionary.GetOrAdd(type, Inner);
 
     static string Inner(Type type)
     {
@@ -167,8 +159,6 @@ public static partial class TypeNameConverter
         return $"{SimpleName(declaringType)}.{typeName}";
     }
 
-    static bool IsAnonType(this Type type)
-    {
-        return type.Name.Contains("AnonymousType");
-    }
+    static bool IsAnonType(this Type type) =>
+        type.Name.Contains("AnonymousType");
 }
