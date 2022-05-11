@@ -5,7 +5,7 @@
     <NoWarn>$(NoWarn);CS8002</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
-    <TargetFrameworks>net461;net48;net6.0</TargetFrameworks>
+    <TargetFrameworks>net48;net6.0</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
     <Using Remove="System.Net.Http" />
