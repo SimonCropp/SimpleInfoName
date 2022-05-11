@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net6</TargetFrameworks>
+    <TargetFramework>net6.0</TargetFramework>
     <NoWarn>$(NoWarn);CS8002</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
-    <TargetFrameworks>net461;net48;net6</TargetFrameworks>
+    <TargetFrameworks>net461;net48;net6.0</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
     <Using Remove="System.Net.Http" />
@@ -14,7 +14,7 @@
     <PackageReference Include="Verify.Xunit" Version="16.7.0" />
     <PackageReference Include="Xunit" Version="2.4.1" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.4" PrivateAssets="all" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" PrivateAssets="all" />
     <PackageReference Include="ProjectDefaults" Version="1.0.78" PrivateAssets="all" />
     <ProjectReference Include="..\SimpleInfoName\SimpleInfoName.csproj" />
   </ItemGroup>
