@@ -6,5 +6,7 @@
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <PackageTags>Type, Naming</PackageTags>
     <Description>Generates simple names info (types, parameters, properties, fields, and methods).</Description>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>10</LangVersion>
   </PropertyGroup>
 </Project>
