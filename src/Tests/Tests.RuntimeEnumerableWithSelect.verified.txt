@@ -1,1 +1,1 @@
-IEnumerable<bool>
+﻿IEnumerable<bool>

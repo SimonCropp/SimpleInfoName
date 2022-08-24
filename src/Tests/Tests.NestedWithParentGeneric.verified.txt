@@ -1,1 +1,1 @@
-Tests.Parent<int>.Child
+﻿Tests.Parent<int>.Child
