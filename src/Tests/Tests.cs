@@ -13,6 +13,14 @@ public class Tests
         Verify(typeof(string).SimpleName());
 
     [Fact]
+    public Task TryGetSimpleName()
+    {
+        var result = typeof(string).TryGetSimpleName(out var name);
+        Assert.True(result);
+        return Verify(name);
+    }
+
+    [Fact]
     public Task GenericTypeDefinition() =>
         Verify(typeof(IEnumerable<>).SimpleName());
 
