@@ -4,19 +4,30 @@ using MyNamespace;
 using SimpleInfoName;
 
 #region Target
+
 namespace MyNamespace
 {
-    public class Parent<T> { }
+    public class Parent<T>
+    {
+    }
 
     public class Target<K> : Parent<int>
     {
-        public Target(){}
+        public Target()
+        {
+        }
+
         public string Property { get; set; } = null!;
         public string field = null!;
-        public void Method<Y, D>(List<D> parameter){}
+
+        public void Method<Y, D>(List<D> parameter)
+        {
+        }
     }
 }
+
 #endregion
+
 [UsesVerify]
 public class Snippets
 {
@@ -31,9 +42,9 @@ public class Snippets
         writer.WriteLine("|   |   |");
         writer.WriteLine("| - | - |");
         writer.WriteLine($@"| Type | `{type.SimpleName()}` |");
-        writer.WriteLine($@"| | Compared to `Type.FullName` of<br> `{type.FullName!.Replace("`","'")}` |");
+        writer.WriteLine($@"| | Compared to `Type.FullName` of<br> `{type.FullName!.Replace("`", "'")}` |");
 
-        var method = type.GetMethod("Method")!.MakeGenericMethod(typeof(string),typeof(bool));
+        var method = type.GetMethod("Method")!.MakeGenericMethod(typeof(string), typeof(bool));
 
         var constructorInfos = type.GetConstructors();
         writer.WriteLine($@"| Constructor | `{constructorInfos.Single().SimpleName()}` |");
@@ -42,6 +53,6 @@ public class Snippets
         writer.WriteLine($@"| Field | `{type.GetField("field").SimpleName()}` |");
         writer.WriteLine($@"| Property | `{type.GetProperty("Property")!.SimpleName()}` |");
     }
-
 }
+
 #endif
