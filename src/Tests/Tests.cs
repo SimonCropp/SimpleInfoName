@@ -1,7 +1,4 @@
-﻿using MyNamespace;
-using SimpleInfoName;
-
-[UsesVerify]
+﻿[UsesVerify]
 public class Tests
 {
     [Fact]

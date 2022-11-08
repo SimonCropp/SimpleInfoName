@@ -1,7 +1,5 @@
 ﻿#if NET48
 
-using MyNamespace;
-using SimpleInfoName;
 // ReSharper disable UnusedTypeParameter
 
 #region Target
