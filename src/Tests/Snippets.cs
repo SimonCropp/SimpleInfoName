@@ -2,6 +2,7 @@
 
 using MyNamespace;
 using SimpleInfoName;
+// ReSharper disable UnusedTypeParameter
 
 #region Target
 
