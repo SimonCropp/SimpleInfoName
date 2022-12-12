@@ -59,10 +59,10 @@ public static partial class TypeNameConverter
             new(typeof(Half?), "Half?"),
 #endif
 #if NET6_0_OR_GREATER
-            new(typeof(DateOnly), "DateOnly"),
-            new(typeof(DateOnly?), "DateOnly?"),
-            new(typeof(TimeOnly), "TimeOnly"),
-            new(typeof(TimeOnly?), "TimeOnly?"),
+            new(typeof(Date), "DateOnly"),
+            new(typeof(Date?), "DateOnly?"),
+            new(typeof(Time), "TimeOnly"),
+            new(typeof(Time?), "TimeOnly?"),
 #endif
         });
 
