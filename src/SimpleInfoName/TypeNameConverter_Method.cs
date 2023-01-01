@@ -21,7 +21,7 @@ public static partial class TypeNameConverter
         infoCache.GetOrAdd(method, _ =>
         {
             var declaringType = SimpleName(method.DeclaringType!);
-            StringBuilder builder = new($"{declaringType}.{method.Name}(");
+            var builder = new StringBuilder($"{declaringType}.{method.Name}(");
             var parameters = method.GetParameters()
                 .Select(x => $"{SimpleName(x.ParameterType)} {x.Name}");
             builder.Append(string.Join(", ", parameters));

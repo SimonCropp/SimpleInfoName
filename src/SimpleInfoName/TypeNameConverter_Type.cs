@@ -36,6 +36,8 @@ public static partial class TypeNameConverter
             new(typeof(uint?), "uint?"),
             new(typeof(long), "long"),
             new(typeof(long?), "long?"),
+            new(typeof(ulong), "ulong"),
+            new(typeof(ulong?), "ulong?"),
             new(typeof(nint), "nint"),
             new(typeof(nint?), "nint"),
             new(typeof(nuint), "nuint"),

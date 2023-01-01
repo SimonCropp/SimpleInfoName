@@ -12,6 +12,7 @@ namespace MyNamespace
 
     public class Target<K> : Parent<int>
     {
+        // ReSharper disable once EmptyConstructor
         public Target()
         {
         }
