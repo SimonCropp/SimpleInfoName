@@ -9,6 +9,7 @@ public static partial class TypeNameConverter
             {
                 return $"Module.{property.Name}";
             }
+
             var declaringType = SimpleName(property.DeclaringType);
             return $"{declaringType}.{property.Name}";
         });

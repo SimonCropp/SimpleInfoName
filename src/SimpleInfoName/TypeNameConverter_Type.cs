@@ -92,18 +92,20 @@ public static partial class TypeNameConverter
             type.IsNested &&
             type.DeclaringType == typeof(Enumerable))
         {
-            var singleOrDefault = type.GetInterfaces()
-                .SingleOrDefault(_ =>
-                    _.IsGenericType &&
-                    _.GetGenericTypeDefinition() == typeof(IEnumerable<>));
-            if (singleOrDefault is not null)
+            foreach (var iface in type.GetInterfaces())
             {
-                if (singleOrDefault.GetGenericArguments().Single().IsAnonType())
+                if (!iface.IsGenericType ||
+                    iface.GetGenericTypeDefinition() != typeof(IEnumerable<>))
+                {
+                    continue;
+                }
+
+                if (iface.GetGenericArguments()[0].IsAnonType())
                 {
                     return "IEnumerable<dynamic>";
                 }
 
-                return SimpleName(singleOrDefault);
+                return SimpleName(iface);
             }
         }
 
@@ -136,7 +138,7 @@ public static partial class TypeNameConverter
                 }
             }
 
-            if (genericArguments.Any())
+            if (genericArguments.Length != 0)
             {
                 var tick = name.IndexOf('`');
                 var builder = new StringBuilder(name.Substring(0, tick));
