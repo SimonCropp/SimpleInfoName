@@ -4,6 +4,16 @@ public static partial class TypeNameConverter
 {
     static ConcurrentDictionary<ICustomAttributeProvider, string> infoCache = new();
 
+#if !NET5_0_OR_GREATER && !NETSTANDARD2_1
+
+    static bool StartsWith(this string value, char ch)
+    {
+        var s = new string(ch, 1);
+        return value.StartsWith(s);
+    }
+
+#endif
+
     public static bool TryGetSimpleName(
         object info,
         [NotNullWhen(true)] out string? name)

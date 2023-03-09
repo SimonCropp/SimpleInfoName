@@ -2,7 +2,7 @@
 
 public static partial class TypeNameConverter
 {
-    static ConcurrentDictionary<Type, Func<Type,Type>> redirects = new();
+    static ConcurrentDictionary<Type, Func<Type, Type>> redirects = new();
 
     public static void AddRedirect<TFrom, TTo>() =>
         AddRedirect(typeof(TFrom), typeof(TTo));
@@ -81,31 +81,37 @@ public static partial class TypeNameConverter
             }
         }
 
-        if (IsAnonType(type))
+        var name = type.Name;
+
+        if (IsAnonType(name))
         {
             return "dynamic";
         }
 
-        if (type.Name.StartsWith("<") ||
-            type.IsNested && type.DeclaringType == typeof(Enumerable))
+        if (name.StartsWith('<') ||
+            type.IsNested &&
+            type.DeclaringType == typeof(Enumerable))
         {
-            var singleOrDefault = type.GetInterfaces()
-                .SingleOrDefault(x =>
-                    x.IsGenericType &&
-                    x.GetGenericTypeDefinition() == typeof(IEnumerable<>));
-            if (singleOrDefault is not null)
+            foreach (var iface in type.GetInterfaces())
             {
-                if (singleOrDefault.GetGenericArguments().Single().IsAnonType())
+                if (!iface.IsGenericType ||
+                    iface.GetGenericTypeDefinition() != typeof(IEnumerable<>))
+                {
+                    continue;
+                }
+
+                if (iface.GetGenericArguments()[0].IsAnonType())
                 {
                     return "IEnumerable<dynamic>";
                 }
-                return SimpleName(singleOrDefault);
+
+                return SimpleName(iface);
             }
         }
 
         if (type.IsGenericParameter)
         {
-            return type.Name;
+            return name;
         }
 
         if (type.IsArray)
@@ -117,7 +123,6 @@ public static partial class TypeNameConverter
         }
 
         Type? declaringType = null;
-        var typeName = type.Name;
         if (type.IsGenericType)
         {
             var genericArguments = type.GetGenericArguments();
@@ -133,19 +138,20 @@ public static partial class TypeNameConverter
                 }
             }
 
-            if (genericArguments.Any())
+            if (genericArguments.Length != 0)
             {
-                var tick = typeName.IndexOf('`');
-                var builder = new StringBuilder(typeName.Substring(0, tick));
-                builder.Append("<");
+                var tick = name.IndexOf('`');
+                var builder = new StringBuilder(name.Substring(0, tick));
+                builder.Append('<');
                 foreach (var argument in genericArguments)
                 {
-                    builder.Append(SimpleName(argument) + ", ");
+                    builder.Append(SimpleName(argument));
+                    builder.Append(", ");
                 }
 
                 builder.Length -= 2;
-                builder.Append(">");
-                typeName = builder.ToString();
+                builder.Append('>');
+                name = builder.ToString();
             }
         }
         else if (type.IsNested)
@@ -155,12 +161,15 @@ public static partial class TypeNameConverter
 
         if (declaringType == null)
         {
-            return typeName;
+            return name;
         }
 
-        return $"{SimpleName(declaringType)}.{typeName}";
+        return $"{SimpleName(declaringType)}.{name}";
     }
 
     static bool IsAnonType(this Type type) =>
         type.Name.Contains("AnonymousType");
+
+    static bool IsAnonType(string name) =>
+        name.Contains("AnonymousType");
 }

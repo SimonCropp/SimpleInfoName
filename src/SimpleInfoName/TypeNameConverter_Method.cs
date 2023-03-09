@@ -21,10 +21,23 @@ public static partial class TypeNameConverter
         infoCache.GetOrAdd(method, _ =>
         {
             var declaringType = SimpleName(method.DeclaringType!);
+
+            var parameters = method.GetParameters();
+            if (parameters.Length == 0)
+            {
+                return $"{declaringType}.{method.Name}()";
+            }
+
             var builder = new StringBuilder($"{declaringType}.{method.Name}(");
-            var parameters = method.GetParameters()
-                .Select(x => $"{SimpleName(x.ParameterType)} {x.Name}");
-            builder.Append(string.Join(", ", parameters));
+            foreach (var parameter in parameters)
+            {
+                builder.Append(SimpleName(parameter.ParameterType));
+                builder.Append(' ');
+                builder.Append(parameter.Name);
+                builder.Append(", ");
+            }
+
+            builder.Length -= 2;
             builder.Append(')');
             return builder.ToString();
         });
