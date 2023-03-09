@@ -81,18 +81,21 @@ public static partial class TypeNameConverter
             }
         }
 
-        if (IsAnonType(type))
+        var name = type.Name;
+
+        if (IsAnonType(name))
         {
             return "dynamic";
         }
 
-        if (type.Name.StartsWith("<") ||
-            type.IsNested && type.DeclaringType == typeof(Enumerable))
+        if (name.StartsWith('<') ||
+            type.IsNested &&
+            type.DeclaringType == typeof(Enumerable))
         {
             var singleOrDefault = type.GetInterfaces()
-                .SingleOrDefault(x =>
-                    x.IsGenericType &&
-                    x.GetGenericTypeDefinition() == typeof(IEnumerable<>));
+                .SingleOrDefault(_ =>
+                    _.IsGenericType &&
+                    _.GetGenericTypeDefinition() == typeof(IEnumerable<>));
             if (singleOrDefault is not null)
             {
                 if (singleOrDefault.GetGenericArguments().Single().IsAnonType())
@@ -105,7 +108,7 @@ public static partial class TypeNameConverter
 
         if (type.IsGenericParameter)
         {
-            return type.Name;
+            return name;
         }
 
         if (type.IsArray)
@@ -117,7 +120,7 @@ public static partial class TypeNameConverter
         }
 
         Type? declaringType = null;
-        var typeName = type.Name;
+        var typeName = name;
         if (type.IsGenericType)
         {
             var genericArguments = type.GetGenericArguments();
@@ -137,14 +140,15 @@ public static partial class TypeNameConverter
             {
                 var tick = typeName.IndexOf('`');
                 var builder = new StringBuilder(typeName.Substring(0, tick));
-                builder.Append("<");
+                builder.Append('<');
                 foreach (var argument in genericArguments)
                 {
-                    builder.Append(SimpleName(argument) + ", ");
+                    builder.Append(SimpleName(argument));
+                    builder.Append(", ");
                 }
 
                 builder.Length -= 2;
-                builder.Append(">");
+                builder.Append('>');
                 typeName = builder.ToString();
             }
         }
@@ -163,4 +167,7 @@ public static partial class TypeNameConverter
 
     static bool IsAnonType(this Type type) =>
         type.Name.Contains("AnonymousType");
+
+    static bool IsAnonType(string name) =>
+        name.Contains("AnonymousType");
 }

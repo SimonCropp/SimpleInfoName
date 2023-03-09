@@ -6,7 +6,8 @@ public static partial class TypeNameConverter
         infoCache.GetOrAdd(constructor, _ =>
         {
             var declaringType = SimpleName(constructor.DeclaringType!);
-            var builder = new StringBuilder($"{declaringType}");
+            var builder = new StringBuilder(declaringType);
+
             if (constructor.IsStatic)
             {
                 builder.Append(".cctor(");
@@ -15,8 +16,9 @@ public static partial class TypeNameConverter
             {
                 builder.Append(".ctor(");
             }
+
             var parameters = constructor.GetParameters()
-                .Select(x => $"{SimpleName(x.ParameterType)} {x.Name}");
+                .Select(_ => $"{SimpleName(_.ParameterType)} {_.Name}");
             builder.Append(string.Join(", ", parameters));
             builder.Append(')');
             return builder.ToString();
