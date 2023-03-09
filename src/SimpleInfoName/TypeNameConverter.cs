@@ -6,8 +6,11 @@ public static partial class TypeNameConverter
 
 #if !NET5_0_OR_GREATER && !NETSTANDARD2_1
 
-    static bool StartsWith(this string value, char ch) =>
-        value.StartsWith(new string(ch, 1));
+    static bool StartsWith(this string value, char ch)
+    {
+        var s = new string(ch, 1);
+        return value.StartsWith(s);
+    }
 
 #endif
 

@@ -159,6 +159,25 @@ public class Tests
     }
 
     [Fact]
+    public Task Constructor() =>
+        Verify(typeof(WithConstructor).GetConstructors().First().SimpleName());
+
+    public class WithConstructor
+    {
+    }
+
+    [Fact]
+    public Task ConstructorAndParam() =>
+        Verify(typeof(WithConstructorAndParam).GetConstructors().First().SimpleName());
+
+    public class WithConstructorAndParam
+    {
+        public WithConstructorAndParam(string param)
+        {
+        }
+    }
+
+    [Fact]
     public Task Redirect()
     {
         TypeNameConverter.AddRedirect<From, To>();
