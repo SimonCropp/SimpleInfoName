@@ -2,7 +2,7 @@
 
 public static partial class TypeNameConverter
 {
-    static ConcurrentDictionary<Type, Func<Type,Type>> redirects = new();
+    static ConcurrentDictionary<Type, Func<Type, Type>> redirects = new();
 
     public static void AddRedirect<TFrom, TTo>() =>
         AddRedirect(typeof(TFrom), typeof(TTo));
@@ -102,6 +102,7 @@ public static partial class TypeNameConverter
                 {
                     return "IEnumerable<dynamic>";
                 }
+
                 return SimpleName(singleOrDefault);
             }
         }
@@ -120,7 +121,6 @@ public static partial class TypeNameConverter
         }
 
         Type? declaringType = null;
-        var typeName = name;
         if (type.IsGenericType)
         {
             var genericArguments = type.GetGenericArguments();
@@ -138,8 +138,8 @@ public static partial class TypeNameConverter
 
             if (genericArguments.Any())
             {
-                var tick = typeName.IndexOf('`');
-                var builder = new StringBuilder(typeName.Substring(0, tick));
+                var tick = name.IndexOf('`');
+                var builder = new StringBuilder(name.Substring(0, tick));
                 builder.Append('<');
                 foreach (var argument in genericArguments)
                 {
@@ -149,7 +149,7 @@ public static partial class TypeNameConverter
 
                 builder.Length -= 2;
                 builder.Append('>');
-                typeName = builder.ToString();
+                name = builder.ToString();
             }
         }
         else if (type.IsNested)
@@ -159,10 +159,10 @@ public static partial class TypeNameConverter
 
         if (declaringType == null)
         {
-            return typeName;
+            return name;
         }
 
-        return $"{SimpleName(declaringType)}.{typeName}";
+        return $"{SimpleName(declaringType)}.{name}";
     }
 
     static bool IsAnonType(this Type type) =>
