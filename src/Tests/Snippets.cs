@@ -41,17 +41,17 @@ public class Snippets
 
         writer.WriteLine("|   |   |");
         writer.WriteLine("| - | - |");
-        writer.WriteLine($@"| Type | `{type.SimpleName()}` |");
-        writer.WriteLine($@"| | Compared to `Type.FullName` of<br> `{type.FullName!.Replace("`", "'")}` |");
+        writer.WriteLine($"| Type | `{type.SimpleName()}` |");
+        writer.WriteLine($"| | Compared to `Type.FullName` of<br> `{type.FullName!.Replace("`", "'")}` |");
 
         var method = type.GetMethod("Method")!.MakeGenericMethod(typeof(string), typeof(bool));
 
         var constructorInfos = type.GetConstructors();
-        writer.WriteLine($@"| Constructor | `{constructorInfos.Single().SimpleName()}` |");
-        writer.WriteLine($@"| Method | `{method.SimpleName()}` |");
-        writer.WriteLine($@"| Parameter | `{method.GetParameters().First().SimpleName()}` |");
-        writer.WriteLine($@"| Field | `{type.GetField("field").SimpleName()}` |");
-        writer.WriteLine($@"| Property | `{type.GetProperty("Property")!.SimpleName()}` |");
+        writer.WriteLine($"| Constructor | `{constructorInfos.Single().SimpleName()}` |");
+        writer.WriteLine($"| Method | `{method.SimpleName()}` |");
+        writer.WriteLine($"| Parameter | `{method.GetParameters().First().SimpleName()}` |");
+        writer.WriteLine($"| Field | `{type.GetField("field").SimpleName()}` |");
+        writer.WriteLine($"| Property | `{type.GetProperty("Property")!.SimpleName()}` |");
     }
 }
 
