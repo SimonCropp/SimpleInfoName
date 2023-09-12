@@ -8,6 +8,6 @@
   <ItemGroup>
     <Using Include="System.Diagnostics.CodeAnalysis" />
     <PackageReference Include="Polyfill" Version="1.27.2" PrivateAssets="all" />
-    <PackageReference Include="ProjectDefaults" Version="1.0.96" PrivateAssets="all" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.97" PrivateAssets="all" />
   </ItemGroup>
 </Project>
