@@ -81,11 +81,11 @@ public class Tests
     [Fact]
     public Task RuntimeEnumerableWithSelect() =>
         // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-        Verify(MethodWithYield().Select(x => x != null).GetType().SimpleName());
+        Verify(MethodWithYield().Select(_ => _ != null).GetType().SimpleName());
 
     [Fact]
     public Task RuntimeEnumerableDynamicWithSelect() =>
-        Verify(MethodWithYieldDynamic().Select(x => x != null).GetType().SimpleName());
+        Verify(MethodWithYieldDynamic().Select(_ => _ != null).GetType().SimpleName());
 
     [Fact]
     public Task RuntimeEnumerableDynamicWithInnerSelect() =>

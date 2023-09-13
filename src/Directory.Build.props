@@ -7,6 +7,6 @@
     <PackageTags>Type, Naming</PackageTags>
     <Description>Generates simple names info (types, parameters, properties, fields, and methods).</Description>
     <ImplicitUsings>enable</ImplicitUsings>
-    <LangVersion>11</LangVersion>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
 </Project>
