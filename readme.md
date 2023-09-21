@@ -12,6 +12,8 @@ Generates names for reflection infos. Adds a `SimpleName()` extension method to 
  * MethodInfo
  * ConstructorInfo
 
+**See [Milestones](../../milestones?state=closed) for release notes.**
+
 ## NuGet package
 
  * https://nuget.org/packages/SimpleInfoName/
