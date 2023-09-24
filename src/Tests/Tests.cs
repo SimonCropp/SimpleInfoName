@@ -1,4 +1,5 @@
-﻿[UsesVerify]
+﻿// ReSharper disable UnusedParameter.Local
+[UsesVerify]
 public class Tests
 {
     [Fact]
@@ -89,7 +90,7 @@ public class Tests
 
     [Fact]
     public Task RuntimeEnumerableDynamicWithInnerSelect() =>
-        Verify(MethodWithYield().Select(x => new {X = x.ToString()}).GetType().SimpleName());
+        Verify(MethodWithYield().Select(_ => new {X = _.ToString()}).GetType().SimpleName());
 
     [Fact]
     public Task EnumerableOfArray() =>
@@ -113,9 +114,7 @@ public class Tests
     public Task ArrayOfList() =>
         Verify(typeof(List<TargetWithNamespace>[]).SimpleName());
 
-    class TargetWithNested
-    {
-    }
+    class TargetWithNested;
 
     [Fact]
     public Task NestedWithParentGeneric() =>
@@ -127,12 +126,9 @@ public class Tests
 
     public class Parent<T>
     {
-        public class Child : Parent<T>
+        public class Child(T value) : Parent<T>
         {
-            public T Value { get; }
-
-            public Child(T value) =>
-                Value = value;
+            public T Value { get; } = value;
         }
     }
 
@@ -148,12 +144,9 @@ public class Tests
     {
         public class Two<K> : One<T>
         {
-            public class Three : Two<K>
+            public class Three(T value) : Two<K>
             {
-                public T Value { get; }
-
-                public Three(T value) =>
-                    Value = value;
+                public T Value { get; } = value;
             }
         }
     }
@@ -162,9 +155,7 @@ public class Tests
     public Task Constructor() =>
         Verify(typeof(WithConstructor).GetConstructors().First().SimpleName());
 
-    public class WithConstructor
-    {
-    }
+    public class WithConstructor;
 
     [Fact]
     public Task ConstructorAndParam() =>
@@ -184,18 +175,12 @@ public class Tests
         return Verify(typeof(From).SimpleName());
     }
 
-    public class From
-    {
-    }
+    public class From;
 
-    public class To
-    {
-    }
+    public class To;
 }
 
 namespace MyNamespace
 {
-    public class TargetWithNamespace
-    {
-    }
+    public class TargetWithNamespace;
 }

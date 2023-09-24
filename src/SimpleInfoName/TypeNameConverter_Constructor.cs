@@ -3,36 +3,38 @@
 public static partial class TypeNameConverter
 {
     public static string SimpleName(this ConstructorInfo constructor) =>
-        infoCache.GetOrAdd(constructor, _ =>
-        {
-            var declaringType = SimpleName(constructor.DeclaringType!);
-
-            if (constructor.IsStatic)
+        infoCache.GetOrAdd(
+            constructor,
+            _ =>
             {
-                return $"{declaringType}.cctor()";
-            }
+                var declaringType = SimpleName(constructor.DeclaringType!);
 
-            var parameters = constructor.GetParameters();
+                if (constructor.IsStatic)
+                {
+                    return $"{declaringType}.cctor()";
+                }
 
-            if (parameters.Length == 0)
-            {
-                return $"{declaringType}.ctor()";
-            }
+                var parameters = constructor.GetParameters();
 
-            var builder = new StringBuilder(declaringType);
-            builder.Append(".ctor(");
+                if (parameters.Length == 0)
+                {
+                    return $"{declaringType}.ctor()";
+                }
 
-            foreach (var parameter in parameters)
-            {
-                builder.Append(SimpleName(parameter.ParameterType));
-                builder.Append(' ');
-                builder.Append(parameter.Name);
-                builder.Append(", ");
-            }
+                var builder = new StringBuilder(declaringType);
+                builder.Append(".ctor(");
 
-            builder.Length -= 2;
+                foreach (var parameter in parameters)
+                {
+                    builder.Append(SimpleName(parameter.ParameterType));
+                    builder.Append(' ');
+                    builder.Append(parameter.Name);
+                    builder.Append(", ");
+                }
 
-            builder.Append(')');
-            return builder.ToString();
-        });
+                builder.Length -= 2;
+
+                builder.Append(')');
+                return builder.ToString();
+            });
 }

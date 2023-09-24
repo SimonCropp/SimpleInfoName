@@ -28,9 +28,7 @@ Given a class definition of:
 ```cs
 namespace MyNamespace
 {
-    public class Parent<T>
-    {
-    }
+    public class Parent<T>;
 
     public class Target<K> : Parent<int>
     {
@@ -48,7 +46,7 @@ namespace MyNamespace
     }
 }
 ```
-<sup><a href='/src/Tests/Snippets.cs#L5-L29' title='Snippet source file'>snippet source</a> | <a href='#snippet-target' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L5-L27' title='Snippet source file'>snippet source</a> | <a href='#snippet-target' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 And a constructed type of `Target<int>`.

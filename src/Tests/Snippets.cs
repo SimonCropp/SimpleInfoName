@@ -6,9 +6,7 @@
 
 namespace MyNamespace
 {
-    public class Parent<T>
-    {
-    }
+    public class Parent<T>;
 
     public class Target<K> : Parent<int>
     {

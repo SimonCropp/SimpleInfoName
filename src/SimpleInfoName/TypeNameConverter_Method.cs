@@ -18,27 +18,29 @@ public static partial class TypeNameConverter
     }
 
     public static string SimpleName(this MethodInfo method) =>
-        infoCache.GetOrAdd(method, _ =>
-        {
-            var declaringType = SimpleName(method.DeclaringType!);
-
-            var parameters = method.GetParameters();
-            if (parameters.Length == 0)
+        infoCache.GetOrAdd(
+            method,
+            _ =>
             {
-                return $"{declaringType}.{method.Name}()";
-            }
+                var declaringType = SimpleName(method.DeclaringType!);
 
-            var builder = new StringBuilder($"{declaringType}.{method.Name}(");
-            foreach (var parameter in parameters)
-            {
-                builder.Append(SimpleName(parameter.ParameterType));
-                builder.Append(' ');
-                builder.Append(parameter.Name);
-                builder.Append(", ");
-            }
+                var parameters = method.GetParameters();
+                if (parameters.Length == 0)
+                {
+                    return $"{declaringType}.{method.Name}()";
+                }
 
-            builder.Length -= 2;
-            builder.Append(')');
-            return builder.ToString();
-        });
+                var builder = new StringBuilder($"{declaringType}.{method.Name}(");
+                foreach (var parameter in parameters)
+                {
+                    builder.Append(SimpleName(parameter.ParameterType));
+                    builder.Append(' ');
+                    builder.Append(parameter.Name);
+                    builder.Append(", ");
+                }
+
+                builder.Length -= 2;
+                builder.Append(')');
+                return builder.ToString();
+            });
 }
