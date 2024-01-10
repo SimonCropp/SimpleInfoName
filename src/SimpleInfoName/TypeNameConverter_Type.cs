@@ -141,7 +141,8 @@ public static partial class TypeNameConverter
             if (genericArguments.Length != 0)
             {
                 var tick = name.IndexOf('`');
-                var builder = new StringBuilder(name.Substring(0, tick));
+                var builder = new StringBuilder();
+                builder.Append(name, 0, tick);
                 builder.Append('<');
                 foreach (var argument in genericArguments)
                 {
