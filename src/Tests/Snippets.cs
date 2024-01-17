@@ -26,7 +26,6 @@ namespace MyNamespace
 
 #endregion
 
-[UsesVerify]
 public class Snippets
 {
     [Fact]
