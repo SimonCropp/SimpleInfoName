@@ -81,6 +81,7 @@ public class Tests
     [Fact]
     public Task RuntimeEnumerableWithSelect() =>
         // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         Verify(MethodWithYield().Select(_ => _ != null).GetType().SimpleName());
 
     [Fact]
