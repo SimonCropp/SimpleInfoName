@@ -24,7 +24,7 @@ Generates names for reflection infos. Adds a `SimpleName()` extension method to 
 Given a class definition of:
 
 <!-- snippet: Target -->
-<a id='snippet-target'></a>
+<a id='snippet-Target'></a>
 ```cs
 namespace MyNamespace
 {
@@ -46,7 +46,7 @@ namespace MyNamespace
     }
 }
 ```
-<sup><a href='/src/Tests/Snippets.cs#L5-L27' title='Snippet source file'>snippet source</a> | <a href='#snippet-target' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L5-L27' title='Snippet source file'>snippet source</a> | <a href='#snippet-Target' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 And a constructed type of `Target<int>`.
