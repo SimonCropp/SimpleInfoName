@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net48;net8.0</TargetFrameworks>
@@ -8,13 +8,13 @@
     <TargetFrameworks>net8.0</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
-    <PackageReference Include="MarkdownSnippets.MsBuild" Version="27.0.2" PrivateAssets="all" />
-    <PackageReference Include="Verify.Xunit" Version="24.2.0" />
-    <PackageReference Include="Xunit" Version="2.8.1" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.1" PrivateAssets="all" />
-    <PackageReference Include="ProjectDefaults" Version="1.0.127" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="MarkdownSnippets.MsBuild" PrivateAssets="all" />
+    <PackageReference Include="Verify.Xunit" />
+    <PackageReference Include="Xunit" />
+    <PackageReference Include="Microsoft.CSharp" />
+    <PackageReference Include="xunit.runner.visualstudio" PrivateAssets="all" />
+    <PackageReference Include="ProjectDefaults" PrivateAssets="all" />
     <ProjectReference Include="..\SimpleInfoName\SimpleInfoName.csproj" />
   </ItemGroup>
 </Project>
