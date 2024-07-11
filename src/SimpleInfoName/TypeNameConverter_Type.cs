@@ -2,7 +2,7 @@
 
 public static partial class TypeNameConverter
 {
-    static ConcurrentDictionary<Type, Func<Type, Type>> redirects = [];
+    static Dictionary<Type, Func<Type, Type>> redirects = [];
 
     public static void AddRedirect<TFrom, TTo>() =>
         AddRedirect(typeof(TFrom), typeof(TTo));
