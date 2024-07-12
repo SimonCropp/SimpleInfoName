@@ -32,7 +32,6 @@ namespace MyNamespace
 
     public class Target<K> : Parent<int>
     {
-        // ReSharper disable once EmptyConstructor
         public Target()
         {
         }
@@ -46,7 +45,7 @@ namespace MyNamespace
     }
 }
 ```
-<sup><a href='/src/Tests/Snippets.cs#L5-L27' title='Snippet source file'>snippet source</a> | <a href='#snippet-Target' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L6-L27' title='Snippet source file'>snippet source</a> | <a href='#snippet-Target' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 And a constructed type of `Target<int>`.
