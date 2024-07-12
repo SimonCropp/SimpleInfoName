@@ -1,6 +1,7 @@
 ﻿#if NET48
 
 // ReSharper disable UnusedTypeParameter
+// ReSharper disable once EmptyConstructor
 
 #region Target
 
@@ -10,7 +11,6 @@ namespace MyNamespace
 
     public class Target<K> : Parent<int>
     {
-        // ReSharper disable once EmptyConstructor
         public Target()
         {
         }
