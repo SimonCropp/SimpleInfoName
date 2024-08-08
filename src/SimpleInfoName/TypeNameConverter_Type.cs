@@ -1,4 +1,5 @@
-﻿namespace SimpleInfoName;
+﻿// ReSharper disable MemberCanBePrivate.Global
+namespace SimpleInfoName;
 
 public static partial class TypeNameConverter
 {
