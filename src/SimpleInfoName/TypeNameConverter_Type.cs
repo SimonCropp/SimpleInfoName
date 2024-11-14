@@ -18,6 +18,7 @@ public static partial class TypeNameConverter
         new List<KeyValuePair<Type, string>>
         {
             new(typeof(object), "object"),
+            new(typeof(Type), "Type"),
             new(typeof(char), "char"),
             new(typeof(char?), "char?"),
             new(typeof(string), "string"),
@@ -37,6 +38,10 @@ public static partial class TypeNameConverter
             new(typeof(uint?), "uint?"),
             new(typeof(long), "long"),
             new(typeof(long?), "long?"),
+#if NET7_0_OR_GREATER
+            new(typeof(Int128), "Int128"),
+            new(typeof(Int128?), "Int128?"),
+#endif
             new(typeof(ulong), "ulong"),
             new(typeof(ulong?), "ulong?"),
             new(typeof(nint), "nint"),
@@ -57,6 +62,12 @@ public static partial class TypeNameConverter
             new(typeof(DateTimeOffset?), "DateTimeOffset?"),
             new(typeof(TimeSpan), "TimeSpan"),
             new(typeof(TimeSpan?), "TimeSpan?"),
+            new(typeof(Uri), "Uri"),
+            new(typeof(Action), "Action"),
+            new(typeof(Exception), "Exception"),
+            new(typeof(ArgumentException), "ArgumentException"),
+            new(typeof(ArgumentNullException), "ArgumentNullException"),
+            new(typeof(ArgumentOutOfRangeException), "ArgumentOutOfRangeException"),
 #if NET5_0_OR_GREATER
             new(typeof(Half), "Half"),
             new(typeof(Half?), "Half?"),
