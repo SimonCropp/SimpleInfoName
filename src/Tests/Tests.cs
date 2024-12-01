@@ -75,6 +75,18 @@ public class Tests
         Verify(MethodWithYield().GetType().SimpleName());
 
     [Fact]
+    public Task VoidType() =>
+        Verify(typeof(void).SimpleName());
+
+    [Fact]
+    public Task VoidMethod() =>
+        Verify(GetType().GetMethod("MethodWithVoidReturn")!.SimpleName());
+
+    public static void MethodWithVoidReturn()
+    {
+    }
+
+    [Fact]
     public Task RuntimeEnumerableDynamic() =>
         Verify(MethodWithYieldDynamic().GetType().SimpleName());
 
