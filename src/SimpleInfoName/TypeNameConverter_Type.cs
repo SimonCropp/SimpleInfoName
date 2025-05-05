@@ -17,6 +17,7 @@ public static partial class TypeNameConverter
     static ConcurrentDictionary<Type, string> cacheDictionary = new(
         new List<KeyValuePair<Type, string>>
         {
+            new(typeof(void), "void"),
             new(typeof(object), "object"),
             new(typeof(Type), "Type"),
             new(typeof(char), "char"),
