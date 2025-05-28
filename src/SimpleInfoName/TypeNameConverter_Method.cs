@@ -18,7 +18,7 @@ public static partial class TypeNameConverter
     }
 
     public static string SimpleName(this MethodInfo method) =>
-        infoCache.GetOrAdd(
+        cache.GetOrAdd(
             method,
             _ =>
             {

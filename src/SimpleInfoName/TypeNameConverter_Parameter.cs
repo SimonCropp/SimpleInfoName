@@ -3,7 +3,7 @@
 public static partial class TypeNameConverter
 {
     public static string SimpleName(this ParameterInfo parameter) =>
-        infoCache.GetOrAdd(
+        cache.GetOrAdd(
             parameter,
             _ =>
             {

@@ -2,7 +2,7 @@
 
 public static partial class TypeNameConverter
 {
-    static ConcurrentDictionary<ICustomAttributeProvider, string> infoCache = [];
+    static ConcurrentDictionary<ICustomAttributeProvider, string> cache = [];
 
     public static bool TryGetSimpleName(
         object info,
