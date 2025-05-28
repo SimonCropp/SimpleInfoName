@@ -100,7 +100,7 @@ public static partial class TypeNameConverter
             return "dynamic";
         }
 
-        if (name.StartsWith('<') ||
+        if (name[0] == '<' ||
             type.IsNested &&
             type.DeclaringType == typeof(Enumerable))
         {
