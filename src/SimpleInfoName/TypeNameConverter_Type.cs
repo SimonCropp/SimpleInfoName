@@ -100,7 +100,9 @@ public static partial class TypeNameConverter
             return "dynamic";
         }
 
-        if (name.StartsWith('<') ||
+#pragma warning disable CA1866
+        if (name.StartsWith("<") ||
+#pragma warning restore CA1866
             type.IsNested &&
             type.DeclaringType == typeof(Enumerable))
         {
