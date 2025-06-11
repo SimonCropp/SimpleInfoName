@@ -1,6 +1,6 @@
 # <img src='/src/icon.png' height='30px'> SimpleInfoName
 
-[![Build status](https://ci.appveyor.com/api/projects/status/dl7snkk70b964ke4/branch/main?svg=true)](https://ci.appveyor.com/project/SimonCropp/SimpleInfoName)
+[![Build status](https://ci.appveyor.com/api/projects/status/52bwfqln7kh4oj07/branch/main?svg=true)](https://ci.appveyor.com/project/SimonCropp/SimpleInfoName)
 [![NuGet Status](https://img.shields.io/nuget/v/SimpleInfoName.svg)](https://www.nuget.org/packages/SimpleInfoName/)
 
 Generates names for reflection infos. Adds a `SimpleName()` extension method to the following types.
@@ -16,6 +16,7 @@ Generates names for reflection infos. Adds a `SimpleName()` extension method to 
 
 
 ## Sponsors
+
 
 ### Entity Framework Extensions<!-- include: zzz. path: /docs/zzz.include.md -->
 
