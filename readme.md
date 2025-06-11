@@ -15,6 +15,11 @@ Generates names for reflection infos. Adds a `SimpleName()` extension method to 
 **See [Milestones](../../milestones?state=closed) for release notes.**
 
 
+## Sponsors
+
+include: zzz
+
+
 ## NuGet
 
  * https://nuget.org/packages/SimpleInfoName
