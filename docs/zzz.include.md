@@ -2,4 +2,4 @@
 
 [Entity Framework Extensions](https://entityframework-extensions.net/) is a major sponsor and is proud to contribute to the development this project.
 
-[![Entity Framework Extensions](docs/zzz.png)](https://entityframework-extensions.net)
+[![Entity Framework Extensions](docs/zzz.png)](https://entityframework-extensions.nethttps://entityframework-extensions.net/bulk-insert?utm_source=simoncropp&utm_medium=SimpleInfoName)
