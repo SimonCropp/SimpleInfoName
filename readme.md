@@ -3,14 +3,14 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/52bwfqln7kh4oj07/branch/main?svg=true)](https://ci.appveyor.com/project/SimonCropp/SimpleInfoName)
 [![NuGet Status](https://img.shields.io/nuget/v/SimpleInfoName.svg)](https://www.nuget.org/packages/SimpleInfoName/)
 
-Generates names for reflection infos. Adds a `SimpleName()` extension method to the following types.
+Generates names for reflection infos. Adds a `SimpleName()` extension method to the following types.<!-- include: intro. path: /docs/intro.include.md -->
 
  * Type
  * ParameterInfo
  * PropertyInfo
  * FieldInfo
  * MethodInfo
- * ConstructorInfo
+ * ConstructorInfo<!-- endInclude -->
 
 **See [Milestones](../../milestones?state=closed) for release notes.**
 
